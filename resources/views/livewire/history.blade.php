@@ -41,7 +41,7 @@
                                 <td class="text-center">
                                     <a href="{{ route('quizzes',['quiz'=>$history->id]) }}">
                                         <i
-                                            class="p-1 text-white bg-blue-700 border rounded fa fa-pencil hover:bg-blue-500"></i>
+                                            class="p-1 text-white bg-blue-700 border rounded fa fa-pencil hover:bg-blue-500">Edit</i>
                                     </a>
                                 </td>
                             </tr>

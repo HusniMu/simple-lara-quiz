@@ -45,7 +45,7 @@
                                 <td class="text-center">
                                     <a href="{{ route('report-details',$report->id) }}">
                                         <i
-                                            class="p-1 text-white bg-green-700 border rounded fa fa-eye hover:bg-green-500"></i>
+                                            class="p-1 text-white bg-green-700 border rounded fa fa-eye hover:bg-green-500">Show</i>
                                     </a>
                                 </td>
                             </tr>

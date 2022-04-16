@@ -32,8 +32,7 @@
                                 <td>{{ $material->created_at->diffForHumans() }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('user-materials-show',$material->id) }}">
-                                        <i class="p-1 text-white bg-green-700 border rounded fa fa-eye
-                                            hover:bg-green-500"></i>
+                                        <i class="p-1 text-white bg-green-700 border rounded fa fa-eye hover:bg-green-500">Show</i>
                                     </a>
                                 </td>
                             </tr>

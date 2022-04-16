@@ -54,9 +54,9 @@
                                     Question
                                 </label>
                                 <input type="hidden" name="id" value="null" wire:model="detailId">
-                                <input type="text" wire:model.defer="detailQuestion" name="detail-question"
-                                    id="detail-question"
-                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <textarea wire:model.defer="detailQuestion" name="detail-question" id="detail-question"
+                                    rows="5"
+                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                             </div>
                         </div>
                         <div class="grid grid-cols-6 gap-6">
@@ -66,30 +66,30 @@
                                 <div class="flex items-center mt-1">
                                     <input type="radio" class="p-3 mr-3" name="detail-correct"
                                         wire:model="detailCorrect" value="0" />
-                                    <input type="text" wire:model.debounce.1000="detailAnswer0" name="detail-answer0"
-                                        id="detail-answer0"
-                                        class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    <textarea wire:model.debounce.1000="detailAnswer0" name="detail-answer0"
+                                        id="detail-answer0" rows="5"
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                                 </div>
                                 <div class="flex items-center mt-1">
                                     <input type="radio" class="p-3 mr-3" name="detail-correct"
                                         wire:model="detailCorrect" value="1" />
-                                    <input type="text" wire:model.debounce.1000="detailAnswer1" name="detail-answer1"
-                                        id="detail-answer1"
-                                        class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    <textarea wire:model.debounce.1000="detailAnswer1" name="detail-answer1"
+                                        id="detail-answer1" rows="5"
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                                 </div>
                                 <div class="flex items-center mt-1">
                                     <input type="radio" class="p-3 mr-3" name="detail-correct"
                                         wire:model="detailCorrect" value="2" />
-                                    <input type="text" wire:model.debounce.1000="detailAnswer2" name="detail-answer2"
-                                        id="detail-answer2"
-                                        class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    <textarea wire:model.debounce.1000="detailAnswer2" name="detail-answer2"
+                                        id="detail-answer2" rows="5"
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                                 </div>
                                 <div class="flex items-center mt-1">
                                     <input type="radio" class="p-3 mr-3" name="detail-correct"
                                         wire:model="detailCorrect" value="3" />
-                                    <input type="text" wire:model.debounce.1000="detailAnswer3" name="detail-answer3"
-                                        id="detail-answer3"
-                                        class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    <textarea wire:model.debounce.1000="detailAnswer3" name="detail-answer3"
+                                        id="detail-answer3" rows="5"
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -112,9 +112,9 @@
                                 <label for="detail-argument" class="block text-sm font-medium text-gray-700">
                                     Argument
                                 </label>
-                                <input type="text" wire:model.defer="detailArgument" name="detail-argument"
-                                    id="detail-argument"
-                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <textarea wire:model.defer="detailArgument" name="detail-argument" id="detail-argument"
+                                    rows="5"
+                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                             </div>
                         </div>
                     </div>
@@ -175,9 +175,9 @@
                             </td>
                             <td>
                                 <i class="p-1 text-white bg-blue-700 border rounded fa fa-pencil hover:bg-blue-500"
-                                    onclick='Livewire.emit("editDetail", {{ $qd->id }})'></i>
+                                    onclick='Livewire.emit("editDetail", {{ $qd->id }})'>Edit</i>
                                 <i class="p-1 text-white bg-red-700 border rounded fa fa-trash-o hover:bg-red-500"
-                                    onclick='Livewire.emit("removeDetail", {{ $qd->id }})'></i>
+                                    onclick='Livewire.emit("removeDetail", {{ $qd->id }})'>Delete</i>
                             </td>
                         </tr>
                         @endforeach

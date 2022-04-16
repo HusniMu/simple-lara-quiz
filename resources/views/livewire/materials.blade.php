@@ -35,11 +35,10 @@
                                 <td>{{ $material->created_at->diffForHumans() }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('materials-form',['material'=>$material->id]) }}">
-                                        <i class="p-1 text-white bg-blue-700 border rounded fa fa-pencil
-                                            hover:bg-blue-500"></i>
+                                        <i class="p-1 text-white bg-blue-700 border rounded fa fa-pencil hover:bg-blue-500">Edit</i>
                                     </a>
                                     <i class="p-1 text-white bg-red-700 border rounded fa fa-trash-o hover:bg-red-500"
-                                        onclick='Livewire.emit("removeMaterial", {{ $material->id }})'></i>
+                                        onclick='Livewire.emit("removeMaterial", {{ $material->id }})'>Delete</i>
                                 </td>
                             </tr>
                             @endforeach

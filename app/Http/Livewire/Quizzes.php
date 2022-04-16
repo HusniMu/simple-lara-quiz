@@ -22,6 +22,8 @@ class Quizzes extends Component
     public $argument;
     public $material;
 
+    public $timer;
+
     public function mount()
     {
         $this->status = 'instruction';
@@ -32,6 +34,8 @@ class Quizzes extends Component
         $this->no = 1;
         $this->totalQuestion = $questions->count();
         $this->correct = 0;
+        $this->timer = 15;
+
         $quizDetail = QuizDetail::where('quiz_id', $this->quiz->id)->where('no', $this->no)->first();
         $this->mySelected = $quizDetail->user_answer ?? null;
         if ($this->mySelected !== $quizDetail->correct_answer) {
@@ -45,9 +49,34 @@ class Quizzes extends Component
         }
     }
 
+    public $listeners = ['timer', 'summary'];
+
+    public function timer(int $countdown)
+    {
+        $this->timer = $countdown;
+    }
+
+    public function summary()
+    {
+        // $this->status = 'summary';
+        $correct = QuizDetail::where('quiz_id', $this->quiz->id)
+            ->whereColumn('correct_answer', 'user_answer')
+            ->get();
+        $this->correct = $correct->count();
+        $totalScore = round(($this->correct * 100) / $this->totalQuestion);
+        $this->quiz->update([
+            'status' => 'finish',
+            'score' => $totalScore
+        ]);
+    }
+
     public function changeStatus($status)
     {
+        // dd($status);
         $this->status = $status;
+        if ($status === 'summary') {
+            dd($this->quiz);
+        }
     }
 
     public function choiceOption($index)
@@ -75,9 +104,6 @@ class Quizzes extends Component
         if ($this->mySelected === $this->question->correct_answer) {
             $this->correct++;
         }
-
-
-
         if ($this->no < $this->totalQuestion) {
             $this->no++;
             $quizDetail = QuizDetail::where('quiz_id', $this->quiz->id)->where('no', $this->no)->first();

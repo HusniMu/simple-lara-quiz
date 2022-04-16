@@ -17,30 +17,32 @@
 </head>
 
 <body class="antialiased">
-    <div class="relative flex items-top justify-center min-h-screen  sm:items-center py-4 sm:pt-0">
+    <div class="relative flex justify-center min-h-screen py-4 items-top sm:items-center sm:pt-0">
         @if (Route::has('login'))
-        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+        <div class="fixed top-0 right-0 hidden px-6 py-4 sm:block">
             @auth
-            <a href="{{ url('/dashboard') }}" class="text-sm text-black-700 dark:text-black-500 underline">Dashboard</a>
+            <a href="{{ url('/dashboard') }}" class="text-sm underline text-black-700 dark:text-black-500">Dashboard</a>
             @else
-            <a href="{{ route('login') }}" class="text-sm text-black-700 dark:text-black-500 underline">Log in</a>
+            <a href="{{ route('login') }}" class="text-sm underline text-black-700 dark:text-black-500">Log in</a>
 
             @if (Route::has('register'))
             <a href="{{ route('register') }}"
-                class="ml-4 text-sm text-black-700 dark:text-black-500 underline">Register</a>
+                class="ml-4 text-sm underline text-black-700 dark:text-black-500">Register</a>
             @endif
             @endauth
         </div>
         @endif
 
         <hr>
-        <div class="mt-5 p-5 w-6/12 border rounded shadow">
+        <div class="w-6/12 p-5 mt-5 border rounded shadow">
             <h1 class="text-2xl font-bold">
                 {{ $material->title }}
             </h1>
-            <h1 class="text-xl font-semibold">
-                {{ $material->body }}
-            </h1>
+            {{--
+            <pre style="white-space: pre-wrap;" class="font-semibold"> --}}
+            <p  class="font-semibold">
+                {!! nl2br($material->body) !!}
+            </p>
             <a href="{{ route('welcome') }}">
                 <p class="text-xs">back</p>
             </a>

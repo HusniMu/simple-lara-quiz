@@ -40,9 +40,9 @@
                                 </td>
                                 <td class="text-center">
                                     <i onclick='Livewire.emit("openModal", "users-modal", {{ json_encode(["user" => $user->id]) }})'
-                                        class="p-1 text-white bg-blue-700 border rounded fa fa-pencil hover:bg-blue-500"></i>
+                                        class="p-1 text-white bg-blue-700 border rounded fa fa-pencil hover:bg-blue-500">Edit</i>
                                     <i class="p-1 text-white bg-red-700 border rounded fa fa-trash-o hover:bg-red-500"
-                                        onclick='Livewire.emit("removeUser", {{ $user->id }})'></i>
+                                        onclick='Livewire.emit("removeUser", {{ $user->id }})'>Delete</i>
                                 </td>
                             </tr>
                             @endforeach
