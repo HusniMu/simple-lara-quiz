@@ -56,7 +56,9 @@ class QuizController extends Controller
     public function initiate(Question $question)
     {
         $user_id = Auth::user()->id;
-        $questions = QuestionDetail::where('question_id', $question->id)->inRandomOrder()->get();
+        $questions = QuestionDetail::where('question_id', $question->id)
+            // ->inRandomOrder()
+            ->get();
 
         $quiz = Quiz::create([
             'user_id' => $user_id,
@@ -64,11 +66,17 @@ class QuizController extends Controller
             'status' => 'unfinish'
         ]);
 
-        $lcg = $this->bsd_rand(3);
         $old = [];
-        foreach ($questions as $question) {
-            $old[$lcg()] = $question;
+        // dd(1 << 30);
+        // 2147483648
+        // dd(6 % 2147483648);
+
+        // dd($questions);
+        foreach ($questions as $dt) {
+            $lcg = $this->bsd_rand(5, $question->id, $dt->id);
+            $old[$lcg()] = $dt;
         }
+        // dd($questions, $old);
         ksort($old);
         $i = 1;
         // dd($old);
@@ -88,11 +96,12 @@ class QuizController extends Controller
         return redirect(route('quizzes', ['quiz' => $quiz->id]));
     }
 
-    public function bsd_rand($seed)
+    public function bsd_rand($seed, $quiz, $question)
     {
-        return function () use (&$seed) {
+        return function () use (&$seed, &$question, &$quiz) {
             // return $seed = (1103515245 * $seed + 12345) % (1 << 31);
-            return $seed = (random_int(0, 50) * $seed + random_int(0, 50)) % (1 << 31);
+            // return $seed = (random_int(0, 50) * $seed + random_int(0, 50)) % (1 << 31);
+            return $seed = (random_int(1, 50) * $question + auth()->id()) % (1 << 31);
         };
     }
 }
