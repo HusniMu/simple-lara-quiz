@@ -11,12 +11,18 @@ Its a simple quiz management using laravel 9 and livewire. this project has feat
 ## Installation
 
 - clone this repo.
-- composer install.
-- php artisan key:generate.
-- php artisan db:seed.
-- npm install
+- run the command
+
+```
+$   composer install
+$   php artisan key:generate
+$   php artisan db:seed
+$   npm install
+```
 
 ## To Run It
 
-- php artisan serve
-- npm run dev or watch if needed
+```
+$   npm run dev
+$   php artisan serve
+```
